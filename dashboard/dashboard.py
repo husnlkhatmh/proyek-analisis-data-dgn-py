@@ -7,21 +7,17 @@ from pandas.api.types import CategoricalDtype
 # Load data
 day_df = pd.read_csv("dashboard/penyewaan_sepeda_cleaning.csv")
 
-# Sidebar filter
 st.sidebar.header("Filter Data Berdasarkan Tahun")
 years = st.sidebar.multiselect("Pilih Tahun", options=[2011, 2012], default=[2011, 2012])
 
-# Filter data berdasarkan tahun yang dipilih
 filtered_df = day_df[day_df["yr"].isin(years)]
 
-# Jika tidak ada tahun yang dipilih, tampilkan pesan dan hentikan eksekusi visualisasi
 if filtered_df.empty:
     st.write("### Tidak ada visualisasi data yang ditampilkan")
 else:
     st.title("Bike Sharing Data Dashboard")
 
-    # Visualisasi Penyewaan Berdasarkan Musim
-    st.write("### Jumlah Penyewaan Sepeda Berdasarkan Musim")
+    st.write("Jumlah Penyewaan Sepeda Berdasarkan Musim")
     season_visual = filtered_df.groupby("season")["cnt"].sum().reset_index()
     plt.figure(figsize=(8, 5))
     ax = sns.barplot(x=season_visual["season"], y=season_visual["cnt"], palette="Reds_r")
@@ -29,8 +25,7 @@ else:
         ax.text(i, value + 500, f"{int(value)}", ha="center", va="bottom", fontsize=10, color="black")
     st.pyplot(plt)
 
-    # Visualisasi Penyewaan Per Bulan
-    st.write("### Siklus perkembangan jumlah penyewaan sepeda selama bulan Januari-Desember")
+    st.write("Siklus perkembangan jumlah penyewaan sepeda selama bulan Januari-Desember")
     bulan_urut = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     filtered_df["mnth"] = filtered_df["mnth"].astype(CategoricalDtype(categories=bulan_urut, ordered=True))
     month_cnt = filtered_df.groupby(["yr", "mnth"])["cnt"].sum().unstack()
@@ -42,8 +37,7 @@ else:
     plt.legend(title="Tahun", loc="upper left", fontsize=10, title_fontsize=12, frameon=True)
     st.pyplot(plt)
 
-    # Visualisasi Penyewaan Berdasarkan Tipe Pengguna
-    st.write("### Perbandingan jumlah penyewa sepeda bertipe casual dan registered berdasarkan tahun")
+    st.write("Perbandingan jumlah penyewa sepeda bertipe casual dan registered berdasarkan tahun")
     type_customer_yearly = filtered_df.groupby("yr")[["registered", "casual"]].sum()
     if len(years) == 1:
         fig, ax = plt.subplots(figsize=(5, 5))
