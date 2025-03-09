@@ -17,7 +17,7 @@ if filtered_df.empty:
 else:
     st.title("Bike Sharing Data Dashboard\n")
 
-    st.write("## Jumlah Penyewaan Sepeda Berdasarkan Musim")
+    st.write("** Jumlah Penyewaan Sepeda Berdasarkan Musim")
     season_visual = filtered_df.groupby("season")["cnt"].sum().reset_index()
     plt.figure(figsize=(8, 5))
     ax = sns.barplot(x=season_visual["season"], y=season_visual["cnt"], palette="Reds_r")
