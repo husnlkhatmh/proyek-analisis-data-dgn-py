@@ -25,6 +25,8 @@ else:
         ax.text(i, value + 500, f"{int(value)}", ha="center", va="bottom", fontsize=10, color="black")
     st.pyplot(plt)
 
+    st.divider().write("")
+
     st.write("**Siklus perkembangan jumlah penyewaan sepeda selama bulan Januari-Desember**")
     bulan_urut = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     filtered_df["mnth"] = filtered_df["mnth"].astype(CategoricalDtype(categories=bulan_urut, ordered=True))
@@ -36,6 +38,8 @@ else:
     plt.xticks(rotation=45)
     plt.legend(title="Tahun", loc="upper left", fontsize=10, title_fontsize=12, frameon=True)
     st.pyplot(plt)
+
+    st.divider().write("")
 
     st.write("**Perbandingan jumlah penyewa sepeda bertipe casual dan registered berdasarkan tahun**")
     type_customer_yearly = filtered_df.groupby("yr")[["registered", "casual"]].sum()
