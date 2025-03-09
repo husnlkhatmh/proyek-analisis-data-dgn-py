@@ -5,7 +5,7 @@ import seaborn as sns
 from pandas.api.types import CategoricalDtype
 
 # Load data
-day_df = pd.read_csv("penyewaan_sepeda_cleaning.csv")
+day_df = pd.read_csv("dashboard/penyewaan_sepeda_cleaning.csv")
 
 # Sidebar filter
 st.sidebar.header("Filter Data Berdasarkan Tahun")
