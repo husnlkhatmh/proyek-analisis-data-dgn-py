@@ -15,7 +15,7 @@ filtered_df = day_df[day_df["yr"].isin(years)]
 if filtered_df.empty:
     st.write("### Tidak ada visualisasi data yang ditampilkan")
 else:
-    st.title("Bike Sharing Data Dashboard\n")
+    st.title("Dashboard Analisis Data Pada Dataset Bike Sharing\n")
 
     st.write("**Jumlah Penyewaan Sepeda Berdasarkan Musim**")
     season_visual = filtered_df.groupby("season")["cnt"].sum().reset_index()
