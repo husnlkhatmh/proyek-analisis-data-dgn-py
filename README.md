@@ -1,3 +1,19 @@
-## Dashboard Bike Sharing Dataset
+## langkah-langkah instalasi dan menjalankan di local
 
-**Tampilan dashboard**
+- Install dependensi
+   ```bash
+   pip install -r requirements.txt
+   ```
+- Masuk ke path dashboard
+  ```bash
+   cd dashboard
+   ```
+- Jalankan dashboard
+   ```bash
+   python -m streamlit run dashboard.py
+   ```
+   atau
+   ```bash
+   streamlit run dashboard.py
+   ```
+- Buka browser dan akses **http://localhost:8501**
